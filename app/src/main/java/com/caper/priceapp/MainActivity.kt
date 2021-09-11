@@ -1,4 +1,4 @@
-package com.Caper.priceapp
+package com.caper.priceapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
