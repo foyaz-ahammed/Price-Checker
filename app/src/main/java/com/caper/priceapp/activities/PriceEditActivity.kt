@@ -3,6 +3,7 @@ package com.caper.priceapp.activities
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.caper.priceapp.R
 import com.caper.priceapp.databinding.ActivityEditBinding
 import com.caper.priceapp.entities.PriceItem
 import com.caper.priceapp.interfaces.PriceDao
@@ -54,6 +55,7 @@ class PriceEditActivity: AppCompatActivity() {
             price.setText(priceItem.price.toString())
             thumbnail.setText(priceItem.thumbnail)
             qrImage.setText(priceItem.qrUrl)
+            submit.text = getString(if(isAdd) R.string.add else R.string.save)
         }
     }
 

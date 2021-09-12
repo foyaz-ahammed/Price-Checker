@@ -1,7 +1,9 @@
 package com.caper.priceapp.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -22,6 +24,11 @@ class PriceViewActivity: AppCompatActivity() {
     private lateinit var binding: ActivityViewBinding
     private lateinit var priceItem: PriceItem
     private val viewModel by viewModel<PriceItemViewModel>()
+
+    private val activityResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +73,13 @@ class PriceViewActivity: AppCompatActivity() {
     /**
      * Called when edit button is clicked
      */
-    fun onEdit(view: View) {}
+    fun onEdit(view: View) {
+        val intent = Intent(this, PriceEditActivity::class.java).apply {
+            putExtra(PriceEditActivity.EXTRA_ADD_OR_EDIT, false)
+            putExtra(PriceEditActivity.EXTRA_PRICE_ITEM, priceItem)
+        }
+        activityResultLauncher.launch(intent)
+    }
 
     /**
      * Called when delete button is clicked
