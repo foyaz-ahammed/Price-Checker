@@ -37,7 +37,7 @@ class PriceEditActivity: AppCompatActivity() {
         isAdd = intent.getBooleanExtra(EXTRA_ADD_OR_EDIT, true)
         val priceItem: PriceItem =
             if(isAdd) { //Add
-                PriceItem(0, "", "", "", "")
+                PriceItem(0, "", "", "", 0f)
             } else { //Edit
                 intent.getParcelableExtra<PriceItem>(EXTRA_PRICE_ITEM) as PriceItem
             }
@@ -66,7 +66,7 @@ class PriceEditActivity: AppCompatActivity() {
                 return
             }
 
-            val item = PriceItem(0,qrImage, thumbnail, name, price)
+            val item = PriceItem(0,qrImage, thumbnail, name, price.toFloat())
 
             runBlocking {
                 withContext(Dispatchers.IO) {

@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.caper.priceapp.activities.PriceViewActivity
 import com.caper.priceapp.databinding.PriceItemBinding
 import com.caper.priceapp.entities.PriceItem
+import com.caper.priceapp.helper.formattedPrice
 
 /**
  * [ListAdapter] for showing price items on main screen
@@ -37,7 +38,7 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
     class ViewHolder(private val binding: PriceItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PriceItem) {
             binding.name.text = item.name
-            binding.price.text = item.price
+            binding.price.text = item.price.formattedPrice()
 
             Glide.with(binding.root.context)
                 .load(item.thumbnail)

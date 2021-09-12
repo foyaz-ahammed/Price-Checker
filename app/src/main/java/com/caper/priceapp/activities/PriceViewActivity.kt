@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.caper.priceapp.databinding.ActivityViewBinding
 import com.caper.priceapp.entities.PriceItem
+import com.caper.priceapp.helper.formattedPrice
 import com.caper.priceapp.viewmodels.PriceItemViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -49,7 +50,7 @@ class PriceViewActivity: AppCompatActivity() {
         binding.apply {
             allViews.isVisible = true
             name.text = item.name
-            price.text = item.price
+            price.text = item.price.formattedPrice()
             Glide.with(this@PriceViewActivity)
                 .load(item.thumbnail)
                 .into(thumbnail)
