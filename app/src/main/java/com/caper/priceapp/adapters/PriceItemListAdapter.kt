@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.caper.priceapp.databinding.PriceItemBinding
 import com.caper.priceapp.entities.PriceItem
 
@@ -35,6 +36,10 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
         fun bind(item: PriceItem) {
             binding.name.text = item.name
             binding.price.text = item.price
+
+            Glide.with(binding.root.context)
+                .load(item.thumbnail)
+                .into(binding.image)
         }
     }
 }
