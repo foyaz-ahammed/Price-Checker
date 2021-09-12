@@ -1,5 +1,6 @@
 package com.caper.priceapp.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.caper.priceapp.R
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.priceRecyclerview.adapter = adapter
+        binding.add.setOnClickListener {
+            val intent = Intent(this, PriceEditActivity::class.java)
+            startActivity(intent)
+        }
 
         val priceList = listOf(
             PriceItem("0001", "https://zxing.org/w/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=0001", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/banana_1f34c.png", "Banana", "$1.00"),

@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="3 items, $100.0"
+        tools:text="3 items, $100.0"
         app:layout_constraintTop_toTopOf="@id/total_Label"
         app:layout_constraintStart_toEndOf="@id/total_Label"/>
 
