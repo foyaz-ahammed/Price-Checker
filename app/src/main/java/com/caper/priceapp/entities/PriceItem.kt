@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
     tableName = "TB_PRICE_ITEM"
 )
 data class PriceItem(
-    @PrimaryKey val id: String,
+    @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name = "qrUrl") val qrUrl: String,
     @ColumnInfo(name = "thumbnail") val thumbnail: String,
     @ColumnInfo(name = "name") val name: String,
