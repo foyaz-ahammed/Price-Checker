@@ -1,6 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/name_label"
+        android:layout_width="@dimen/item_label_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/name_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/name"/>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="@dimen/item_content_width"
+        android:layout_height="wrap_content"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toTopOf="@id/name_label"
+        app:layout_constraintStart_toEndOf="@id/name_label"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/price_label"
+        android:layout_width="@dimen/item_label_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/price_label"
+        app:layout_constraintTop_toBottomOf="@id/name_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/price"/>
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="@dimen/item_content_width"
+        android:layout_height="wrap_content"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toTopOf="@id/price_label"
+        app:layout_constraintStart_toEndOf="@id/price_label"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/thumbnail_label"
+        android:layout_width="@dimen/item_label_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/thumbnail_label"
+        app:layout_constraintTop_toBottomOf="@id/price_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/thumbnail"/>
+
+    <EditText
+        android:id="@+id/thumbnail"
+        android:layout_width="@dimen/item_content_width"
+        android:layout_height="wrap_content"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toTopOf="@id/thumbnail_label"
+        app:layout_constraintStart_toEndOf="@id/thumbnail_label"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/qr_image_label"
+        android:layout_width="@dimen/item_label_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/qr_image_label"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/qr_image"/>
+
+    <EditText
+        android:id="@+id/qr_image"
+        android:layout_width="@dimen/item_content_width"
+        android:layout_height="wrap_content"
+        android:paddingStart="3dp"
+        android:paddingEnd="3dp"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toTopOf="@id/qr_image_label"
+        app:layout_constraintStart_toEndOf="@id/qr_image_label"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/add"
+        app:layout_constraintTop_toBottomOf="@id/qr_image_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

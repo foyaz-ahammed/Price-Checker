@@ -30,7 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         //Setup add button click listener
         binding.add.setOnClickListener {
-            val intent = Intent(this, PriceEditActivity::class.java)
+            val intent = Intent(this, PriceEditActivity::class.java).apply {
+                putExtra(PriceEditActivity.EXTRA_ADD_OR_EDIT, true)
+            }
             startActivity(intent)
         }
 
