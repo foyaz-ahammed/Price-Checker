@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -44,6 +45,11 @@ dependencies {
     //Glide
     implementation "com.github.bumptech.glide:glide:$versions.glide"
     annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
+
+    //Room
+    kapt "androidx.room:room-compiler:${versions.room}"
+    implementation "androidx.room:room-runtime:${versions.room}"
+    annotationProcessor "androidx.room:room-compiler:${versions.room}"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
