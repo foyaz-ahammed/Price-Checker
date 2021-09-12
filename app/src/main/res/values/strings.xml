@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Price Checker</string>
+    <string name="total_label">Total:</string>
+    <string name="total_price_format">%1$d items, $%2$.2f</string>
 </resources>
