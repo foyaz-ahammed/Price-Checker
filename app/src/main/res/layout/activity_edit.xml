@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="3dp"
         android:paddingEnd="3dp"
+        android:inputType="numberDecimal"
         android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toTopOf="@id/price_label"
         app:layout_constraintStart_toEndOf="@id/price_label"

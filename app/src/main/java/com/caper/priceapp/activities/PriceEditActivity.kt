@@ -49,6 +49,12 @@ class PriceEditActivity: AppCompatActivity() {
      * Update views from [PriceItem]
      */
     private fun updateViews(priceItem: PriceItem) {
+        binding.apply {
+            name.setText(priceItem.name)
+            price.setText(priceItem.price.toString())
+            thumbnail.setText(priceItem.thumbnail)
+            qrImage.setText(priceItem.qrUrl)
+        }
     }
 
     /**
