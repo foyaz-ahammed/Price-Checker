@@ -22,4 +22,11 @@ class PriceItemViewModel(private val repository: PriceItemsRepository): ViewMode
             _priceItem.value = result
         }
     }
+
+    fun deleteItem(item: PriceItem, callback: () -> Unit) {
+        viewModelScope.launch {
+            repository.deleteItem(item)
+            callback.invoke()
+        }
+    }
 }

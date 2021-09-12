@@ -1,6 +1,7 @@
 package com.caper.priceapp.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -19,6 +20,7 @@ class PriceViewActivity: AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityViewBinding
+    private lateinit var priceItem: PriceItem
     private val viewModel by viewModel<PriceItemViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +39,7 @@ class PriceViewActivity: AppCompatActivity() {
         viewModel.priceItem.observe(this) {
             if(it == null) return@observe
 
+            priceItem = it
             updateViews(it)
         }
 
@@ -57,6 +60,20 @@ class PriceViewActivity: AppCompatActivity() {
             Glide.with(this@PriceViewActivity)
                 .load(item.qrUrl)
                 .into(qrImage)
+        }
+    }
+
+    /**
+     * Called when edit button is clicked
+     */
+    fun onEdit(view: View) {}
+
+    /**
+     * Called when delete button is clicked
+     */
+    fun onDelete(view: View) {
+        viewModel.deleteItem(priceItem) {
+            finish()
         }
     }
 }

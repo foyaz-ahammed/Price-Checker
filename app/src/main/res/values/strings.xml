@@ -8,4 +8,6 @@
     <string name="qr_image_label">Qr code image url:</string>
     <string name="qr_code_description">Scan this qr code image</string>
     <string name="add">Add</string>
+    <string name="edit">edit</string>
+    <string name="delete">delete</string>
 </resources>
