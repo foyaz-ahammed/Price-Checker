@@ -2,6 +2,8 @@ package com.caper.priceapp.global
 
 import android.app.Application
 import com.caper.priceapp.modules.databaseModule
+import com.caper.priceapp.modules.repositoryModule
+import com.caper.priceapp.modules.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -14,7 +16,7 @@ class PriceCheckerApplication: Application() {
 
         startKoin {
             androidContext(this@PriceCheckerApplication)
-            modules(databaseModule)
+            modules(databaseModule, repositoryModule, viewModelModule)
         }
     }
 }

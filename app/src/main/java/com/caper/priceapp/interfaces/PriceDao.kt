@@ -1,5 +1,6 @@
 package com.caper.priceapp.interfaces
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.caper.priceapp.entities.PriceItem
@@ -10,5 +11,5 @@ import com.caper.priceapp.entities.PriceItem
 @Dao
 interface PriceDao {
     @Query("SELECT * FROM TB_PRICE_ITEM")
-    fun getAllPriceItems(): List<PriceItem>
+    fun getAllPriceItems(): LiveData<List<PriceItem>>
 }
