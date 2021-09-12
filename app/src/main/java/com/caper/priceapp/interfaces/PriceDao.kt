@@ -2,6 +2,7 @@ package com.caper.priceapp.interfaces
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.caper.priceapp.entities.PriceItem
 
@@ -15,4 +16,7 @@ interface PriceDao {
 
     @Query("SELECT * FROM TB_PRICE_ITEM where id == :itemId")
     suspend fun getPriceItem(itemId: Long): PriceItem
+
+    @Insert
+    suspend fun insertItem(item: PriceItem)
 }
