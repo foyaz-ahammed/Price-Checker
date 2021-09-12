@@ -12,4 +12,7 @@ import com.caper.priceapp.entities.PriceItem
 interface PriceDao {
     @Query("SELECT * FROM TB_PRICE_ITEM")
     fun getAllPriceItems(): LiveData<List<PriceItem>>
+
+    @Query("SELECT * FROM TB_PRICE_ITEM where id == :itemId")
+    suspend fun getPriceItem(itemId: Long): PriceItem
 }

@@ -12,6 +12,7 @@ import com.caper.priceapp.helper.DB_NAME
 import com.caper.priceapp.interfaces.PriceDao
 import com.caper.priceapp.repositories.PriceItemsRepository
 import com.caper.priceapp.viewmodels.MainViewModel
+import com.caper.priceapp.viewmodels.PriceItemViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -27,6 +28,7 @@ val repositoryModule = module {
 
 val viewModelModule = module {
     single { MainViewModel(get()) }
+    single { PriceItemViewModel(get()) }
 }
 
 /**

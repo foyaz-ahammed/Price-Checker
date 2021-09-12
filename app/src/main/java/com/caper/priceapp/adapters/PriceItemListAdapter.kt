@@ -45,7 +45,10 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
 
             binding.content.setOnClickListener {
                 binding.root.context.apply {
-                    val intent = Intent(binding.root.context, PriceViewActivity::class.java)
+                    //Start PriceViewActivity adding item id to intent
+                    val intent = Intent(binding.root.context, PriceViewActivity::class.java).apply {
+                        putExtra(PriceViewActivity.EXTRA_PRICE_ITEM_ID, item.id)
+                    }
                     startActivity(intent)
                 }
             }

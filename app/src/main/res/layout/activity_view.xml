@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/all_views"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="thumbnail, name_label, name, price_label, price, qr_code_description, qr_image"/>
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="@dimen/large_thumbnail_size"
+        android:layout_height="@dimen/large_thumbnail_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/large_text_size"
+        android:text="@string/name_label"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
+        app:layout_constraintTop_toTopOf="@id/thumbnail" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="@dimen/large_text_size"
+        tools:text="Banana"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/name_label"
+        app:layout_constraintStart_toEndOf="@id/name_label"/>
+
+    <TextView
+        android:id="@+id/price_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/large_text_size"
+        android:text="@string/price_label"
+        app:layout_constraintStart_toStartOf="@id/name_label"
+        app:layout_constraintTop_toBottomOf="@id/name_label" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="@dimen/large_text_size"
+        tools:text="$10.00"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/price_label"
+        app:layout_constraintStart_toEndOf="@id/price_label"/>
+
+    <TextView
+        android:id="@+id/qr_code_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="@dimen/large_text_size"
+        android:text="@string/qr_code_description"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/qr_image"
+        android:layout_width="@dimen/qr_image_size"
+        android:layout_height="@dimen/qr_image_size"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_description"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

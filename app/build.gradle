@@ -49,6 +49,7 @@ dependencies {
     //Room
     kapt "androidx.room:room-compiler:${versions.room}"
     implementation "androidx.room:room-runtime:${versions.room}"
+    implementation "androidx.room:room-ktx:${versions.room}"
     annotationProcessor "androidx.room:room-compiler:${versions.room}"
 
     //Koin
