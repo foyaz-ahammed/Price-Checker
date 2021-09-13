@@ -28,6 +28,10 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
         holder.bind(item)
     }
 
+    override fun onViewRecycled(holder: ViewHolder) {
+        holder.recycle()
+    }
+
     object DiffCallback: DiffUtil.ItemCallback<PriceItem>() {
         override fun areItemsTheSame(oldItem: PriceItem, newItem: PriceItem): Boolean =
             oldItem.id == newItem.id
@@ -55,6 +59,14 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
                     startActivity(intent)
                 }
             }
+        }
+
+        /**
+         * Clear memory when view is recycled
+         */
+        fun recycle() {
+            Glide.with(binding.root.context)
+                .clear(binding.image)
         }
     }
 }
