@@ -21,7 +21,7 @@ class PriceEditActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityEditBinding
     private var isAdd: Boolean = true
-    private var itemId: Long = 0
+    private lateinit var priceItem: PriceItem
     private val priceDao: PriceDao by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +44,6 @@ class PriceEditActivity: AppCompatActivity() {
                 intent.getParcelableExtra<PriceItem>(EXTRA_PRICE_ITEM) as PriceItem
             }
 
-        itemId = priceItem.id
         updateViews(priceItem)
     }
 
@@ -75,7 +74,7 @@ class PriceEditActivity: AppCompatActivity() {
             return
         }
 
-        val item = PriceItem(itemId, qrImage, thumbnail, name, price.toFloat())
+        val item = PriceItem(priceItem.id, qrImage, thumbnail, name, price.toFloat(), priceItem.favorite)
         runBlocking {
             withContext(Dispatchers.IO) {
                 if(isAdd) {

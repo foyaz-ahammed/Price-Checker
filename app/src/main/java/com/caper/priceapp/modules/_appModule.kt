@@ -58,6 +58,7 @@ fun provideDatabase(application: Application) =
                         put("thumbnail", item.thumbnail)
                         put("name", item.name)
                         put("price", item.price)
+                        put("favorite", item.favorite)
                     }
 
                     db.insert("TB_PRICE_ITEM", SQLiteDatabase.CONFLICT_REPLACE, contentValues)

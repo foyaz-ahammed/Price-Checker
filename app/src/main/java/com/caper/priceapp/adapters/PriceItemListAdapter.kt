@@ -16,7 +16,7 @@ import com.caper.priceapp.helper.formattedPrice
 /**
  * [ListAdapter] for showing price items on main screen
  */
-class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHolder>(DiffCallback) {
+class PriceItemListAdapter(private val callback: (item: PriceItem) -> Unit): ListAdapter<PriceItem, PriceItemListAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = PriceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -37,10 +37,11 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
             oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: PriceItem, newItem: PriceItem): Boolean =
-            oldItem.name == newItem.name && oldItem.price == newItem.price && oldItem.qrUrl == newItem.qrUrl && oldItem.thumbnail == newItem.thumbnail
+            oldItem.name == newItem.name && oldItem.price == newItem.price && oldItem.qrUrl == newItem.qrUrl
+                    && oldItem.thumbnail == newItem.thumbnail && oldItem.favorite == newItem.favorite
     }
 
-    class ViewHolder(private val binding: PriceItemBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: PriceItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PriceItem) {
             binding.name.text = item.name
             binding.price.text = item.price.formattedPrice()
@@ -49,6 +50,12 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
                 .load(item.thumbnail)
                 .error(R.drawable.ic_unavailable)
                 .into(binding.image)
+            Glide.with(binding.root.context)
+                .load(
+                    if(item.favorite > 0) R.drawable.ic_favorite
+                    else R.drawable.ic_unfavorite
+                )
+                .into(binding.imageFavorite)
 
             binding.content.setOnClickListener {
                 binding.root.context.apply {
@@ -59,6 +66,11 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
                     startActivity(intent)
                 }
             }
+
+            binding.imageFavorite.setOnClickListener {
+                val newItem = PriceItem(item.id, item.qrUrl, item.thumbnail, item.name, item.price, if(item.favorite == 0) 1 else 0)
+                callback.invoke(newItem)
+            }
         }
 
         /**
@@ -67,6 +79,8 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
         fun recycle() {
             Glide.with(binding.root.context)
                 .clear(binding.image)
+            Glide.with(binding.root.context)
+                .clear(binding.imageFavorite)
         }
     }
 }

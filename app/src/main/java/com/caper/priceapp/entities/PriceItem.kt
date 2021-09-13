@@ -18,5 +18,6 @@ data class PriceItem(
     @ColumnInfo(name = "qrUrl") val qrUrl: String,
     @ColumnInfo(name = "thumbnail") val thumbnail: String,
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "price") val price: Float
+    @ColumnInfo(name = "price") val price: Float,
+    @ColumnInfo(name = "favorite") val favorite: Int = 0
 ): Parcelable

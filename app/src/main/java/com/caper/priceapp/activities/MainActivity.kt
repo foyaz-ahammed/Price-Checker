@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModel<MainViewModel>()
-    private val adapter = PriceItemListAdapter()
+    private lateinit var adapter: PriceItemListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Setup adapter
+        adapter = PriceItemListAdapter { viewModel.updateItem(it) }
         binding.priceRecyclerview.adapter = adapter
 
         //Setup add button click listener
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.priceItems.observe(this) {
             updateViews(it)
         }
+        viewModel.priceItems
     }
 
     /**
