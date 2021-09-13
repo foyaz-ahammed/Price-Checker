@@ -45,7 +45,7 @@ class PriceViewActivity: AppCompatActivity() {
             return
         }
 
-        binding.allViews.isVisible = true
+        binding.allViews.isVisible = false
         viewModel.priceItem.observe(this) {
             if(it == null) return@observe
 
