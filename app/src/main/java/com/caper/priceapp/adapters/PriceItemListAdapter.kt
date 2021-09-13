@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.caper.priceapp.R
 import com.caper.priceapp.activities.PriceViewActivity
 import com.caper.priceapp.databinding.PriceItemBinding
 import com.caper.priceapp.entities.PriceItem
@@ -42,6 +43,7 @@ class PriceItemListAdapter: ListAdapter<PriceItem, PriceItemListAdapter.ViewHold
 
             Glide.with(binding.root.context)
                 .load(item.thumbnail)
+                .error(R.drawable.ic_unavailable)
                 .into(binding.image)
 
             binding.content.setOnClickListener {

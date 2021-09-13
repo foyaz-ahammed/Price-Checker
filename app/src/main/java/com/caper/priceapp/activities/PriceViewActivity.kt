@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.caper.priceapp.R
 import com.caper.priceapp.databinding.ActivityViewBinding
 import com.caper.priceapp.entities.PriceItem
 import com.caper.priceapp.helper.formattedPrice
@@ -65,9 +66,11 @@ class PriceViewActivity: AppCompatActivity() {
             price.text = item.price.formattedPrice()
             Glide.with(this@PriceViewActivity)
                 .load(item.thumbnail)
+                .error(R.drawable.ic_unavailable)
                 .into(thumbnail)
             Glide.with(this@PriceViewActivity)
                 .load(item.qrUrl)
+                .error(R.drawable.ic_unavailable)
                 .into(qrImage)
         }
     }

@@ -11,4 +11,5 @@
     <string name="save">Save</string>
     <string name="edit">edit</string>
     <string name="delete">delete</string>
+    <string name="no_items_description">No items. Please add items.</string>
 </resources>
