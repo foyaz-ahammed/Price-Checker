@@ -21,6 +21,7 @@ class PriceEditActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityEditBinding
     private var isAdd: Boolean = true
+    private var itemId: Long = 0
     private val priceDao: PriceDao by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,7 @@ class PriceEditActivity: AppCompatActivity() {
                 intent.getParcelableExtra<PriceItem>(EXTRA_PRICE_ITEM) as PriceItem
             }
 
+        itemId = priceItem.id
         updateViews(priceItem)
     }
 
@@ -63,24 +65,25 @@ class PriceEditActivity: AppCompatActivity() {
      * Called when "add" button is clicked
      */
     private fun submit() {
-        if(isAdd) {
-            val name = binding.name.text.toString()
-            val price = binding.price.text.toString()
-            val thumbnail = binding.thumbnail.text.toString()
-            val qrImage = binding.qrImage.text.toString()
+        val name = binding.name.text.toString()
+        val price = binding.price.text.toString()
+        val thumbnail = binding.thumbnail.text.toString()
+        val qrImage = binding.qrImage.text.toString()
 
-            if(name.isEmpty() || price.isEmpty() || thumbnail.isEmpty() || qrImage.isEmpty()) {
-                Toast.makeText(this, "Every field is required to be filled", Toast.LENGTH_SHORT).show()
-                return
-            }
+        if(name.isEmpty() || price.isEmpty() || thumbnail.isEmpty() || qrImage.isEmpty()) {
+            Toast.makeText(this, "Every field is required to be filled", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-            val item = PriceItem(0,qrImage, thumbnail, name, price.toFloat())
-
-            runBlocking {
-                withContext(Dispatchers.IO) {
+        val item = PriceItem(itemId, qrImage, thumbnail, name, price.toFloat())
+        runBlocking {
+            withContext(Dispatchers.IO) {
+                if(isAdd) {
                     priceDao.insertItem(item)
-                    finish()
+                } else {
+                    priceDao.updateItem(item)
                 }
+                finish()
             }
         }
     }

@@ -8,6 +8,6 @@ import com.caper.priceapp.interfaces.PriceDao
  */
 class PriceItemsRepository(private val priceDao: PriceDao) {
     fun getAllPriceItems() = priceDao.getAllPriceItems()
-    suspend fun getPriceItem(id: Long) = priceDao.getPriceItem(id)
-    suspend fun deleteItem(item: PriceItem) = priceDao.deleteItem(item)
+    fun getPriceItem(id: Long) = priceDao.getPriceItem(id)
+    fun deleteItem(item: PriceItem) = priceDao.deleteItem(item)
 }

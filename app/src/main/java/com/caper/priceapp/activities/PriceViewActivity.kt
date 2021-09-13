@@ -23,11 +23,13 @@ class PriceViewActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityViewBinding
     private lateinit var priceItem: PriceItem
+    private var itemId: Long = 0
     private val viewModel by viewModel<PriceItemViewModel>()
 
     private val activityResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
+        viewModel.loadData(itemId)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +38,7 @@ class PriceViewActivity: AppCompatActivity() {
         binding = ActivityViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val itemId = intent.getLongExtra(EXTRA_PRICE_ITEM_ID, -1)
+        itemId = intent.getLongExtra(EXTRA_PRICE_ITEM_ID, -1)
         if(itemId == -1L) {
             finish()
             return
